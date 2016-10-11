@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <title>Mon blog</title>
-    <link href="style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" >
     </head>
     <body>
         <h1>Mon super blog !</h1>
