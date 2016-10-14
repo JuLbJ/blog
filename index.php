@@ -7,7 +7,7 @@
     </head>
     <body>
         <h1>Mon super blog !</h1>
-        <p>Dernièrs billets du blog :</p>
+        <p>Dernièrs billets du blog : </p>
 
 <?php
 // *******************   1. Connection à la base de donnees

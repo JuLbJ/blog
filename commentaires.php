@@ -39,16 +39,22 @@ $donnees = $req->fetch();
 </div>
 
 <h2>Commentaires</h2>
+    <?php
+    $req->closeCursor();  // !!! important !!! on libère CURSEUR pour la prochaine requêt
 
+    // ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨   3. Récuperation des commentaires
+$req = $bdd->prepare('SELECT auteur, commentaire, DATE_FORMAT(date_commentaire, \'%d%m%Y à %Hh%imin%ss\') AS date_commentaire_fr FROM commentaires HWERE id_billet = ? ORDER BY date_commentaire');
 
+$req->execute(array($_GET['billet']));
 
-
-
-
-
-
-
-
-
+while ($donnees = $req->fetch()) {
+    ?>
+    <p><strong><?php echo htmlspecialchars($donnees['auteur']); ?></strong>
+        le <?php echo $donnees['date_commentaire_fr']; ?></p>
+    <p><?php echo nl2br(htmlspecialchars($donnees['commentaire'])); ?></p>
+    <?php
+}       // ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨  4. Fin de la boucle des commentaires
+    $req->closeCursor();
+?>
 </body>
 </html>
